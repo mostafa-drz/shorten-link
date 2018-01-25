@@ -30,7 +30,6 @@ class SignUp extends Component {
     const { email, password } = this.state;
     Accounts.createUser( { email, password }, (error) => {
       if(error){
-        console.log(error);
         this.setState({ error: error.message });
       }
       else{

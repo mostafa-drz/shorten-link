@@ -52,7 +52,7 @@ class LogIn extends Component {
           <button type="submit">Submit</button>
           {error && <Error message={error} />}
         </form>
-        <Link to="/">Have An Account?</Link>
+        <Link to="/signup">Register</Link>
       </div>
     );
   }
