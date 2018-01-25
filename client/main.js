@@ -1,26 +1,28 @@
 import { Meteor } from 'meteor/meteor';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SignUp from './../imports/ui/components/SignUp';
-import Link from './../imports/ui/components/Link';
-import NotFound from './../imports/ui/components/NotFound';
-import LogIn from './../imports/ui/components/LogIn';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import RequireAuth from '../imports/ui/components/helpers/_require_auth';
-import OnlyUnauth from '../imports/ui/components/helpers/_only_unauth';
-import { Tracker } from 'meteor/tracker';
 
-const routes = (
-  <BrowserRouter>
-     <Switch>
-        <Route exact path="/" component={OnlyUnauth(LogIn)} />
-        <Route exact path="/signup" component={OnlyUnauth(SignUp)} />
-        <Route exact path="/links" component={RequireAuth(Link)} />
-        <Route path="*" component={NotFound} />
-    </Switch>
-  </BrowserRouter>
-);
+import { Tracker } from 'meteor/tracker';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import reducers from '../imports/ui/reducers';
+import { getUser } from '../imports/ui/actions/auth';
+import App from '../imports/ui/components/App';
+
+const store = createStore(reducers);
+
+
+Tracker.autorun(()=>{
+  const user = Meteor.user();
+  store.dispatch(getUser({ user }));
+});
 
 Meteor.startup(() => {
-  ReactDOM.render( routes, document.getElementById('app'));
+  ReactDOM.render( 
+
+    <Provider store={store}>
+      <App/>
+    </Provider >
+
+    ,document.getElementById('app'));
 })
