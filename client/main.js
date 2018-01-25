@@ -7,13 +7,14 @@ import NotFound from './../imports/ui/components/NotFound';
 import LogIn from './../imports/ui/components/LogIn';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RequireAuth from '../imports/ui/components/helpers/_require_auth';
+import OnlyUnauth from '../imports/ui/components/helpers/_only_unauth';
 import { Tracker } from 'meteor/tracker';
 
 const routes = (
   <BrowserRouter>
      <Switch>
-        <Route exact path="/" component={LogIn} />
-        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/" component={OnlyUnauth(LogIn)} />
+        <Route exact path="/signup" component={OnlyUnauth(SignUp)} />
         <Route exact path="/links" component={RequireAuth(Link)} />
         <Route path="*" component={NotFound} />
     </Switch>
