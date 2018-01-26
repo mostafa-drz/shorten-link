@@ -33,7 +33,7 @@ class LogIn extends Component {
 
     Meteor.loginWithPassword({ email }, password, (error) => {
       if(error){
-        this.setState({ error: error.message });
+        this.setState({ error: error.reason });
       }else{
         this.props.logIn({ user: Meteor.user() })
         this.props.history.push('/links');
@@ -46,9 +46,9 @@ class LogIn extends Component {
     const { email, password, error } = this.state;
     return (
       <div>
-        <form onSubmit={(e) => this.handleSubmit(e)}>
+        <form onSubmit={(e) => this.handleSubmit(e)} noValidate>
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} placeholder="email" onChange={(e) => { this._handleEmailInput(e.target.value) }} />
+          <input type="email" id="email" value={email} placeholder="email" onChange={(e) => { this._handleEmailInput(e.target.value) }}/>
           <label htmlFor="password">Password</label>
           <input type="password" id="password" value={password} placeholder="password" onChange={(e) => { this._handlePaswordInput(e.target.value) }} />
           <button type="submit">Submit</button>
