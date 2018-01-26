@@ -11,8 +11,8 @@ const App = () => {
   return(
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={LogIn} />
-        <Route exact path="/signup" component={SignUp} />
+        <Route exact path="/" component={OnlyUnauth(LogIn)} />
+        <Route exact path="/signup" component={OnlyUnauth(SignUp)} />
         <Route exact path="/links" component={RequireAuth(Link)} />
         <Route path="*" component={NotFound} />
       </Switch>
