@@ -1,6 +1,6 @@
 import React from 'react';
 import SignUp from './SignUp';
-import Link from './Link';
+import Dashboard from './Dashboard';
 import NotFound from './NotFound';
 import LogIn from './LogIn';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
@@ -13,7 +13,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={OnlyUnauth(LogIn)} />
         <Route exact path="/signup" component={OnlyUnauth(SignUp)} />
-        <Route exact path="/links" component={RequireAuth(Link)} />
+        <Route exact path="/links" component={RequireAuth(Dashboard)} />
         <Route path="*" component={NotFound} />
       </Switch>
     </BrowserRouter>
