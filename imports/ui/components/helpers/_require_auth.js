@@ -5,14 +5,13 @@ export default function(ComposedComponent,user) {
     class Authentication extends Component {
         componentWillMount() {
           if(!this.props.user){
-            console.log(this.props);
-            console.log('no user mount');
+            this.props.history.push('/');
           }
         }
 
       componentWillUpdate(nextProps) {
         if (!nextProps.user) {
-          console.log('no user update');
+          this.props.history.push('/');
         }
       }
         render() {
@@ -20,7 +19,6 @@ export default function(ComposedComponent,user) {
         }
     }
     function mapSateToProps(state){
-      console.log(state);
       return{
         user: state.auth.user
       }

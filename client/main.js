@@ -3,19 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { Tracker } from 'meteor/tracker';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import reducers from '../imports/ui/reducers';
-import { getUser } from '../imports/ui/actions/auth';
+import { LogIn } from '../imports/ui/actions/auth';
 import App from '../imports/ui/components/App';
-
-const store = createStore(reducers);
-
-
-Tracker.autorun(()=>{
-  const user = Meteor.user();
-  store.dispatch(getUser({ user }));
-});
+import thunk from 'redux-thunk';
+import { fetchUser } from './../imports/ui/actions/auth';
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunk)));
+store.dispatch(fetchUser());
 
 Meteor.startup(() => {
   ReactDOM.render( 

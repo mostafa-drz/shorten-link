@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import Error from './helpers/Error';
-
+import { logIn } from '../actions/auth';
+import { connect } from 'react-redux';
 class LogIn extends Component {
 
   constructor(props) {
@@ -34,6 +35,7 @@ class LogIn extends Component {
       if(error){
         this.setState({ error: error.message });
       }else{
+        this.props.logIn({ user: Meteor.user() })
         this.props.history.push('/links');
       }
     });
@@ -58,4 +60,4 @@ class LogIn extends Component {
   }
 }
 
-export default LogIn;
+export default connect(null, { logIn })(LogIn);
