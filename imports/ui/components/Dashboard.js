@@ -32,7 +32,7 @@ class Dashboard extends Component{
   _handleSubmit(e){
     e.preventDefault();
     const { url } = this.state;
-    Links.insert({ url }, (error) => {
+    Links.insert({ url, _user: this.props.user._id }, (error) => {
       if(error){
         this.setState({error: error.reason});
       }else{

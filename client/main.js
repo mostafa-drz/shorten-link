@@ -16,7 +16,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(thunk)));
 store.dispatch(fetchUser());
 
-Tracker.autorun(async ()=>{
+Tracker.autorun(async () => {
+  Meteor.subscribe('links');
   const links = await Links.find({}).fetch();
   store.dispatch(addLinks({ links }));
 });
