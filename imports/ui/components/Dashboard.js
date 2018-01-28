@@ -1,29 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { logOut } from './../actions/auth';
+import React from 'react';
 import LinksList from './LinksList';
-import { Links } from '../../api/links';
 import NewLink from './NewLink';
+import LogOut from './LogOut';
 
-class Dashboard extends Component{
-  handleLogOut(){
-    Meteor.logout();
-    this.props.logOut();
-    this.props.history.push('/');
-  }
-  render(){
+const Dashboard = () => {
   return(
     <div>
-      <NewLink />
-      <LinksList />
-      <button onClick={(e) => this.handleLogOut()}>Log Out</button>
+      <NewLink/>
+      <LinksList/>
+      <LogOut/>
     </div>
   );
 }
-}
-function mapStateToProps(state){
-  return{
-    user: state.auth.user,
-  }
-}
-export default connect(mapStateToProps, { logOut })(Dashboard);
+export default Dashboard;

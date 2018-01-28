@@ -16,11 +16,9 @@ Meteor.methods({
         if (!this.userId) {
             throw new Meteor.Error('You are not authorized');
         }
-
         if (!isURL(url)) {
             throw new Meteor.Error('It is not a valid url');
         }
-
         Links.insert({ _id: shortid.generate(), url, _user: this.userId });
     }
 });

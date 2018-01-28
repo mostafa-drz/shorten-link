@@ -6,6 +6,7 @@ import LogIn from './LogIn';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import RequireAuth from './helpers/_require_auth';
 import OnlyUnauth from './helpers/_only_unauth';
+import LogOut from './LogOut';
 
 const App = () => {
   return(
