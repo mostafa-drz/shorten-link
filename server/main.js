@@ -1,5 +1,26 @@
 import { Meteor } from 'meteor/meteor';
+import { WebApp } from 'meteor/webapp';
+import { Links } from '../imports/api/links';
 
-import '../imports/api/links';
+Meteor.startup(() => {
+    WebApp.connectHandlers.use((req, res, next) => {
+        const _id = req.url.slice(1);
+        const link = Links.findOne({ _id });
+        if (link) {
+            res.statusCode = 302;
+            const url = normalizeURL(link.url);
+            res.setHeader('Location', url);
+            res.end();
+        } else {
+            next();
+        }
+    });
+});
 
-Meteor.startup(() => {});
+normalizeURL = (url) => {
+    let newUrl = url;
+    if (newUrl.indexOf('http://') === -1) {
+        newUrl = 'http://' + url;
+    }
+    return newUrl;
+}

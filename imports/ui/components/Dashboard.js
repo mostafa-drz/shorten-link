@@ -32,9 +32,17 @@ class Dashboard extends Component{
   _handleSubmit(e){
     e.preventDefault();
     const { url } = this.state;
-    Links.insert({ url, _user: this.props.user._id }, (error) => {
+    // Links.insert({ url, _user: this.props.user._id }, (error) => {
+    //   if(error){
+    //     this.setState({error: error.reason});
+    //   }else{
+    //     this.initiate();
+    //     this.setState({ status: 'Done!'});
+    //   }
+    // });
+    Meteor.call('links.insert', url, (error) => {
       if(error){
-        this.setState({error: error.reason});
+        this.setState({ error: error.message });
       }else{
         this.initiate();
         this.setState({ status: 'Done!'});
