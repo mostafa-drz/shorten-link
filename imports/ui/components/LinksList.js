@@ -25,7 +25,7 @@ class LinksList extends Component{
       <div>
         <DashboardToolBar onShowAllChange={(status) => this.handleShowChange(status)} />
         <ul>
-          {this.props.links.map((link) => ((link.visible || showAll) && <Link key={link._id} url={link.url} _id={link._id} visible={link.visible}/>))}
+          {this.props.links.map((link) => ((link.visible || showAll) && <Link key={link._id} {...link} />))}
         </ul>
       </div>
     );

@@ -11,6 +11,11 @@ Meteor.startup(() => {
             const url = normalizeURL(link.url);
             res.setHeader('Location', url);
             res.end();
+            try {
+                Links.update({ _id }, { $inc: { visitedCount: 1 }, $set: { lastVisit: new Date() } });
+            } catch (error) {
+                throw new Meteor.Error(error);
+            }
         } else {
             next();
         }

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import CopyToClipBoard from './CopyToClipBoard';
 import { connect } from 'react-redux';
 import { updateVisible } from '../actions/link';
-
+import moment from 'moment';
 class Link extends Component{
 
   constructor(props){
@@ -32,7 +32,7 @@ class Link extends Component{
     );
   }
   render(){
-    const { url, _id, visible } = this.props;
+    const { url, _id, visible, visitedCount, lastVist } = this.props;
     const { btnText } = this.state;
     const abs_url = Meteor.absoluteUrl(_id);
     return(
@@ -40,6 +40,7 @@ class Link extends Component{
         <p>{url}</p>
         <a target='blank' href={Meteor.absoluteUrl(_id)}>{abs_url}</a>
         {this.state.copy && <CopyToClipBoard text={abs_url} _id={_id} />}
+        <p><span>Last Vist: {moment(lastVist).format('YYYY MMM DD - hh:mm A')}</span><span>Visit Count: {visitedCount}</span></p>
         <button onClick={() =>this._handleCopy()}>{btnText}</button>
         {this.renderHideButton()}
         </li>
@@ -49,6 +50,10 @@ class Link extends Component{
 
 Link.propTypes = {
   url: PropTypes.string.isRequired,
-  _id: PropTypes.string.isRequired
+  _id: PropTypes.string.isRequired,
+  visitedCount: PropTypes.number.isRequired,
+  lastVist: PropTypes.instanceOf(Date),
+  visible: PropTypes.bool.isRequired
 }
+
 export default connect(null, { updateVisible })(Link);
