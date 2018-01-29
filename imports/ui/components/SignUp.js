@@ -63,17 +63,22 @@ class SignUp extends Component {
   render() {
     const { email, password, error } = this.state;
     return (
-      <div>
-        <form onSubmit={(e) => this.handleSubmit(e)} noValidate>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} placeholder="email" onChange={(e)=>{this._handleEmailInput(e.target.value)}} onFocus={(e)=>this.clearErrors()} />
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={password} placeholder="password" onChange={(e) => { this._handlePaswordInput(e.target.value) }} onFocus={(e) => this.clearErrors()} />
+      <div className='box-view'>
+        <div className='box-view__box'>
+          <h3 className='box-view__title '>Sign Up</h3>
+          <form onSubmit={(e) => this.handleSubmit(e)} noValidate className='box-view__form '>
+          <div className="field">
+            <input type="email" id="email" value={email} placeholder="email" onChange={(e)=>{this._handleEmailInput(e.target.value)}} onFocus={(e)=>this.clearErrors()} />
+          </div>
+          <div className="field">
+            <input type="password" id="password" value={password} placeholder="password" onChange={(e) => { this._handlePaswordInput(e.target.value) }} onFocus={(e) => this.clearErrors()} />
+          </div>
           <button type="submit">Submit</button>
           { error && <Error message={error}/> }
         </form>
         <Link to="/">Have An Account?</Link>
       </div>
+    </div>
     );
   }
 }

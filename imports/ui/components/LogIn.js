@@ -45,16 +45,21 @@ class LogIn extends Component {
   render() {
     const { email, password, error } = this.state;
     return (
-      <div>
-        <form onSubmit={(e) => this.handleSubmit(e)} noValidate>
-          <label htmlFor="email">Email</label>
-          <input type="email" id="email" value={email} placeholder="email" onChange={(e) => { this._handleEmailInput(e.target.value) }}/>
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" value={password} placeholder="password" onChange={(e) => { this._handlePaswordInput(e.target.value) }} />
-          <button type="submit">Submit</button>
-          {error && <Error message={error} />}
-        </form>
-        <Link to="/signup">Register</Link>
+      <div className='box-view'>
+        <div className='box-view__box'>
+          <h3 className='box-view__title '>Log In</h3>
+          <form onSubmit={(e) => this.handleSubmit(e)} noValidate className='box-view__form '>
+            <div className='field'>
+              <input type="email" id="email" value={email} placeholder="email" onChange={(e) => { this._handleEmailInput(e.target.value) }} />
+            </div>
+            <div className='field'>
+              <input type="password" id="password" value={password} placeholder="password" onChange={(e) => { this._handlePaswordInput(e.target.value) }} />
+            </div>
+              <button type="submit">Submit</button>
+              {error && <Error message={error} />}
+            </form>
+          <Link to="/signup">Register</Link>
+        </div>
       </div>
     );
   }
