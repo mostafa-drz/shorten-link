@@ -1,0 +1,22 @@
+.not-found {
+    width: 100vw;
+    height: 100vh;
+    background-color: $box-view-overlay-color;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .not-found__container {
+        background-color: #ffebee;
+        text-align: center;
+        width: 80vw;
+        padding: 1rem;
+    }
+    .not-found__header {
+        font-size: 2rem;
+    }
+    .not-found__description {
+        font-size: 1.8rem;
+        line-height: 10rem;
+    }
+}
