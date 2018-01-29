@@ -27,8 +27,8 @@ class Link extends Component{
   renderHideButton(){
     const { _id, visible } = this.props;
     return(
-      visible ?  <button onClick={() => {this.props.updateVisible( { _id, visible:false })}}>Hide</button>
-              :  <button onClick={() => { this.props.updateVisible({ _id, visible: true }) }}>Unhidden</button>
+      visible ? <button onClick={() => { this.props.updateVisible({ _id, visible: false }) }} className='button  button--pill'>Hide</button>
+              : <button onClick={() => { this.props.updateVisible({ _id, visible: true }) }} className='button  button--pill'>Unhidden</button>
     );
   }
   render(){
@@ -41,7 +41,7 @@ class Link extends Component{
         <a target='blank' href={Meteor.absoluteUrl(_id)}>{abs_url}</a>
         {this.state.copy && <CopyToClipBoard text={abs_url} _id={_id} />}
         <p><span>Last Vist: {moment(lastVist).format('YYYY MMM DD - hh:mm A')}</span><span>Visit Count: {visitedCount}</span></p>
-        <button onClick={() =>this._handleCopy()}>{btnText}</button>
+        <button onClick={() =>this._handleCopy()} className='button button--pill'>{btnText}</button>
         {this.renderHideButton()}
         </li>
     )

@@ -15,4 +15,20 @@
     &:hover {
         opacity: .8;
     }
+    &--pill {
+        background-color: transparent;
+        line-height: 1.2;
+        margin: 1rem 0;
+        box-shadow: none;
+        border: 1px solid $button-default-bg-color;
+        border-left: none;
+        transition: background-color .3s ease-in-out;
+        &:first-of-type {
+            border-left: 1px solid $button-default-bg-color;
+        }
+        &:hover {
+            background-color: #b2dfdb;
+            transition: background-color .3s ease-in-out;
+        }
+    }
 }
