@@ -24,8 +24,9 @@ Meteor.startup(() => {
 
 normalizeURL = (url) => {
     let newUrl = url;
-    if (newUrl.indexOf('http://') === -1) {
+    if (newUrl.indexOf('http://') === -1 && newUrl.indexOf('https://') === -1) {
         newUrl = 'http://' + url;
     }
+    console.log(newUrl);
     return newUrl;
 }

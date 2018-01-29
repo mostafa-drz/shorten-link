@@ -1,73 +1,39 @@
 import React, { Component } from 'react';
-import { Meteor } from 'meteor/meteor';
-import Error from './helpers/Error';
-import { addLinks } from '../actions/link';
-import { connect } from 'react-redux';
-class NewLink extends Component {
+import NewLinkModal from './NewLinkModal';
 
-  constructor(props) {
+class NewLink extends Component{
+
+  constructor(props){
     super(props);
-    this._handleInputChange = this._handleInputChange.bind(this);
-    this._handleSubmit = this._handleSubmit.bind(this);
-    this.initiate = this.initiate.bind(this);
-    this.clearMessages = this.clearMessages.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   }
+
   state = {
-    url: '',
-    error: false,
-    status: false,
+    newModalOpen: false,
+    label: 'Add New Link'
   }
 
-  _handleSubmit(e) {
-    e.preventDefault();
-    const { url } = this.state;
-    Meteor.call('links.insert', url, (error) => {
-      if (error) {
-        this.setState({ error: error.message });
-      } else {
-        this.initiate();
-        this.setState({ status: 'Done!' });
-      }
-    });
+  closeModal(){
+    this.setState({newModalOpen:false});
   }
 
-  _handleInputChange(url) {
-    this.setState({ url });
+  openModal(){
+    this.setState({newModalOpen:true});
   }
-
-  initiate() {
-    this.setState({
-      url: '',
-      error: false,
-      status: false
-    });
-  }
-
-  clearMessages() {
-    this.setState({
-      error: false,
-      status: false,
-    })
-  }
-
-  render() {
-    const { error, status, url, links } = this.state;
+  render(){
+    const { newModalOpen, label } = this.state;
     return(
       <div>
-        {error && <Error message={error} />}
-        {status && <p>{status}</p>}
-        <form onSubmit={(e) => this._handleSubmit(e)}>
-          <input type="text"
-            placeholder='URL...'
-            value={url}
-            onChange={(e) => this._handleInputChange(e.target.value)}
-            onFocus={(e) => { this.clearMessages() }}
-          />
-          <button type="submit">Shorten</button>
-        </form>
-    </div>
+        <button onClick={() => this.openModal()}>Add New Link</button>
+        <NewLinkModal 
+        isOpen={newModalOpen}
+        label={label}
+        onCloseModal={this.closeModal}
+        />
+      </div>
     );
   }
 }
 
-export default connect(null, { addLinks })(NewLink);
+export default NewLink;
