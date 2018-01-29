@@ -3,6 +3,11 @@
     margin: 0;
 }
 
+*:active,
+*:focus {
+    outline: none;
+}
+
 html {
     font-size: 62.5%;
 }
@@ -45,6 +50,8 @@ a:focus,
 a:active {
     outline: none;
     text-decoration: none;
+    font-style: normal;
+    color: black;
 }
 
 p {

@@ -66,6 +66,7 @@ class SignUp extends Component {
       <div className='box-view'>
         <div className='box-view__box'>
           <h3 className='box-view__title '>Sign Up</h3>
+          {error && <Error message={error} />}
           <form onSubmit={(e) => this.handleSubmit(e)} noValidate className='box-view__form '>
           <div className="field">
             <input type="email" id="email" value={email} placeholder="email" onChange={(e)=>{this._handleEmailInput(e.target.value)}} onFocus={(e)=>this.clearErrors()} />
@@ -73,8 +74,7 @@ class SignUp extends Component {
           <div className="field">
             <input type="password" id="password" value={password} placeholder="password" onChange={(e) => { this._handlePaswordInput(e.target.value) }} onFocus={(e) => this.clearErrors()} />
           </div>
-          <button type="submit">Submit</button>
-          { error && <Error message={error}/> }
+          <button type="submit" className="button">Sign Up</button>
         </form>
         <Link to="/">Have An Account?</Link>
       </div>
