@@ -1,6 +1,6 @@
 import { Mongo } from 'meteor/mongo';
 import { Meteor } from 'meteor/meteor';
-import { isURL } from 'validator';
+import { isURL, isBoolean } from 'validator';
 import shortid from 'shortid';
 
 export const Links = new Mongo.Collection('links');
@@ -19,6 +19,18 @@ Meteor.methods({
         if (!isURL(url)) {
             throw new Meteor.Error('It is not a valid url');
         }
-        Links.insert({ _id: shortid.generate(), url, _user: this.userId });
+        Links.insert({
+            _id: shortid.generate(),
+            url,
+            _user: this.userId,
+            visible: true
+        });
+    },
+
+    'links.updateVisiblity' ({ _id, visible }) {
+        if (!this.userId) {
+            throw new Meteor.Error('You are not authorized');
+        }
+        Links.update({ _id, _user: this.userId }, { $set: { visible } });
     }
 });
