@@ -56,14 +56,16 @@ class NewLink extends Component {
       <div>
         {error && <Error message={error} />}
         {status && <p>{status}</p>}
-        <form onSubmit={(e) => this._handleSubmit(e)}>
-          <input type="text"
-            placeholder='URL...'
-            value={url}
-            onChange={(e) => this._handleInputChange(e.target.value)}
-            onFocus={(e) => { this.clearMessages() }}
-          />
-          <button type="submit">Shorten</button>
+        <form onSubmit={(e) => this._handleSubmit(e)} className='box-view__form'>
+          <div className='field'>
+            <input type="text"
+              placeholder='URL...'
+              value={url}
+              onChange={(e) => this._handleInputChange(e.target.value)}
+              onFocus={(e) => { this.clearMessages() }}
+            />
+          </div>
+          <button type="submit" className="button button--shorten">Shorten</button>
         </form>
     </div>
     );

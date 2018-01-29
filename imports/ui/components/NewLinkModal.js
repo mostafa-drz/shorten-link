@@ -15,6 +15,8 @@ class NewLinkModal extends Component{
         isOpen={isOpen}
         onRequestClose={onCloseModal}
         contentLabel={label}
+        className='box-view__box'
+        overlayClassName='box-view box-view--modal'
         >
         <NewLinkForm/>
       </Modal>

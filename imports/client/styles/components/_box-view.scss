@@ -32,3 +32,10 @@
     color: $title-font-color;
     font-weight: 400;
 }
+
+.box-view--modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: fade-out($box-view-overlay-color, .3);
+}
