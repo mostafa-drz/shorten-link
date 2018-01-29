@@ -17,7 +17,9 @@ body {
     font-size: 1.6rem;
 }
 
-input {
+input[type="text"],
+input[type="password"],
+input[type="email"] {
     border: none;
     outline: none;
     padding: .5rem 1rem;
