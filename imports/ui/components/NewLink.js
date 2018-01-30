@@ -25,7 +25,7 @@ class NewLink extends Component{
     const { newModalOpen, label } = this.state;
     return(
       <div>
-        <button onClick={() => this.openModal()}>Add New Link</button>
+        <button className='button button--add-link' onClick={() => this.openModal()}>+ Add New Link</button>
         <NewLinkModal 
         isOpen={newModalOpen}
         label={label}

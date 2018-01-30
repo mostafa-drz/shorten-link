@@ -37,6 +37,16 @@ input[type="email"] {
     }
 }
 
+input[type='checkbox'] {
+    border: none;
+    outline: none;
+    padding: .5rem 1rem;
+    line-height: 4rem;
+    font-size: 4rem;
+    margin-left: .2rem;
+    vertical-align: 2px;
+}
+
 .field {
     display: flex;
     justify-content: space-between;

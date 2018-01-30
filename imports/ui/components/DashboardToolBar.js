@@ -13,7 +13,7 @@ class DashboardToolBar extends Component {
     const { showAll, label } =this.state;
     return(
       <div>
-        <label>{label}</label>
+        <label style={{color:'#263238', letterSpacing:'0.3rem', verticalAlign: 'baseline'}}>{label}</label>
         <input type='checkbox' 
           checked={showAll} 
           onChange={(e)=>this.handleVisibleChange(e.target.checked)} 

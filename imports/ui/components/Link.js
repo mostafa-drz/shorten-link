@@ -38,10 +38,10 @@ class Link extends Component{
     return(
         <li className='links__item'>
         <p className='links__item__main'>{url}</p>
-        <a target='blank' href={Meteor.absoluteUrl(_id)} className='links__item__trimmed'>{abs_url}</a>
+        <a target='_blank' href={Meteor.absoluteUrl(_id)} className='links__item__trimmed'>{abs_url}</a>
           {this.state.copy && <CopyToClipBoard text={abs_url} _id={_id} />}
           <div className='links__item__stats'>
-          <span><span className='links__item__stats__label'>Last Vist:</span> {moment(lastVist).format('YYYY MMM DD - hh:mm A')}</span> - <span><span className='links__item__stats__label'>Visit Count:</span> {visitedCount}</span>
+          <span><span className='links__item__stats__label'>Last Vist:</span> {moment(lastVist).format('YYYY MMM DD - hh:mm A')}</span> - <span>{visitedCount} visits</span>
           </div>
           <div>
             <button onClick={() =>this._handleCopy()} className='button button--pill'>{btnText}</button>

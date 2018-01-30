@@ -18,7 +18,7 @@
     &--pill {
         background-color: transparent;
         line-height: 1.2;
-        margin: 1rem 0;
+        margin: .3rem 0;
         box-shadow: none;
         border: 1px solid $button-default-bg-color;
         border-left: none;
@@ -34,5 +34,10 @@
     &--shorten {
         background-color: #006064;
         color: #eceff1;
+    }
+    &--add-link {
+        background-color: #40c4ff;
+        font-size: 2rem;
+        font-weight: 400;
     }
 }
