@@ -5,10 +5,9 @@ import LogOut from './LogOut';
 
 const Dashboard = () => {
   return(
-    <div>
+    <div className='dashboard'>
       <NewLink/>
-      <LinksList/>
-      <LogOut/>
+      <LinksList className='links'/>
     </div>
   );
 }
