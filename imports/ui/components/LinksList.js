@@ -3,7 +3,7 @@ import Link from './Link';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import DashboardToolBar from './DashboardToolBar';
-
+import FlipMove from 'react-flip-move';
 class LinksList extends Component{
 
   constructor(props){
@@ -25,7 +25,9 @@ class LinksList extends Component{
       <div>
         <DashboardToolBar onShowAllChange={(status) => this.handleShowChange(status)} />
         <ul>
-          {this.props.links.map((link) => ((link.visible || showAll) && <Link key={link._id} {...link} />))}
+          <FlipMove duration={500} easing="ease-out">
+            {this.props.links.map((link) => ((link.visible || showAll) && <Link key={link._id} {...link} />))}
+          </FlipMove>
         </ul>
       </div>
     );
