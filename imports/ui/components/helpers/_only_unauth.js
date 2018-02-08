@@ -10,7 +10,7 @@ export default function(ComposedComponent) {
         }
         componentWillUpdate(nextProps) {
             if (this.props.user) {
-                this.props.history.push('/link');
+                nextProps.push('/links');
             }
         }
         render() {

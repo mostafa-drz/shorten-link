@@ -9,8 +9,6 @@ const UserHeader = () => {
       <nav className='navbar'>
         <ul className='nav'>
           <li className='nav__item  nav__item--brand'><Link to='/'>Trim WWW</Link></li>
-          <li className='nav__item'><Link to="/about">About Us</Link></li>
-          <li className='nav__item'><Link to="/Contact">Contact Us</Link></li>
           <li className='nav__item nav__item--action'><LogOut/></li>
         </ul>
       </nav>
