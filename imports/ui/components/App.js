@@ -14,7 +14,7 @@ const App = () => {
           <div>
             <Header/>
             <Switch>
-          <Route exatc path="/" component={RequireAuth(Dashboard)} />
+              <Route exatc path="/" component={RequireAuth(Dashboard)} />
               <Route exact path="/login" component={OnlyUnauth(LogIn)} />
               <Route exact path="/signup" component={OnlyUnauth(SignUp)} />
               <Route exact path="/links" component={RequireAuth(Dashboard)} />
