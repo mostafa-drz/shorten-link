@@ -40,4 +40,14 @@
         font-size: 2rem;
         font-weight: 400;
     }
+    &--link {
+        transition: all .3s ease;
+        padding-bottom: 1rem;
+        margin-top: 2rem;
+        font-size: 1.3rem;
+        &:hover {
+            color: #006064;
+            transition: all .3s ease;
+        }
+    }
 }
